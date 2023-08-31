@@ -3,7 +3,7 @@ package blackjack;
 import java.util.ArrayList;
 import cards.Card;
 
-public class BlackjackPlayer {
+public class BlackjackPlayer implements BlackjackActions {
 
     private ArrayList<Card> hand;
     private String username;
@@ -61,7 +61,6 @@ public class BlackjackPlayer {
     public boolean isBust() {
         // returns true if the hand value is over 21, meaning that the player has lost
          if(getHandValue() > 21) {
-             System.out.println(getUsername()+" has gone bust!");
              return true;
          } else {
              return false;
@@ -81,6 +80,15 @@ public class BlackjackPlayer {
 
     public void stand() {
         System.out.println(getUsername()+" has decided to stand!");
+    }
+
+    public void showHand() {
+        System.out.println(getUsername()+"'s cards are:");
+        for(Card c : hand) {
+            System.out.println(c.toString());
+            // Prints out each card in the hand
+        }
+        System.out.println(getUsername()+" has a hand value of "+getHandValue());
     }
 
 }

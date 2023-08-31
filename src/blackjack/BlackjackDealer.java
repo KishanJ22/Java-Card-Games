@@ -13,19 +13,16 @@ public class BlackjackDealer implements BlackjackActions {
         // The arraylist is initialized.
     }
 
-    @Override
     public void addCard(Card card) {
         hand.add(card);
         // The card is added to the dealer's hand.
     }
 
-    @Override
     public void clearHand() {
         hand.clear();
         // The dealer's hand is cleared.
     }
 
-    @Override
     public int getHandValue() {
         int value = 0;
         int numAces = 0;
@@ -50,22 +47,19 @@ public class BlackjackDealer implements BlackjackActions {
         // returns the value of the dealer's hand
     }
 
-    @Override
     public boolean hasBlackjack() {
         // returns true if there are 2 cards in hand with a combined value of 21
         if(hand.size() == 2 && getHandValue() == 21) {
-            System.out.println("Dealer has Blackjack!");
             return true;
         } else {
             return false;
         }
     }
 
-    @Override
     public boolean isBust() {
         if(getHandValue() > 21) {
-            System.out.println("The dealer is bust!");
             return true;
+            // If the dealer's hand value is over 21, then the dealer is bust.
         } else {
             return false;
         }
@@ -76,18 +70,20 @@ public class BlackjackDealer implements BlackjackActions {
         // The dealer's face up card is printed.
     }
 
-    @Override
     public void hit(Card c) {
-        if(getHandValue() < 17) {
-            System.out.println("The dealer hits.");
-            addCard(c);
-        } else {
-            stand();
-        }
+        addCard(c);
     }
 
-    @Override
     public void stand() {
         System.out.println("The dealer stands.");
+        // The dealer stands.
+    }
+
+    public void showHand() {
+        System.out.println("The dealer's hand is:");
+        for (Card c : hand) {
+            System.out.println(c.toString());
+        }
+        // The dealer's hand is printed at the end of the game.
     }
 }
