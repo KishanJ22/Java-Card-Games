@@ -1,3 +1,5 @@
+package cards;
+
 public class Card {
     private final String rank;
     // There are 13 ranks in a deck of cards.
@@ -19,7 +21,21 @@ public class Card {
         return suit;
     }
 
+    public int getValue() {
+        if(rank.equals("Jack") || rank.equals("Queen") || rank.equals("King")) {
+            return 10;
+            // Jack, Queen, and King are all worth 10 points.
+        } else if(rank.equals("Ace")) {
+            return 11;
+            // Ace is worth 11 points.
+        } else {
+            return Integer.parseInt(rank);
+            // The rank is returned as an integer (2 to 10).
+        }
+    }
+
     public String toString() {
         return rank + " of " + suit;
+        // The rank and suit of the card are returned as a string.
     }
 }
