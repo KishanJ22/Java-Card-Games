@@ -83,12 +83,14 @@ public class BlackjackPlayer implements BlackjackActions {
     }
 
     public void showHand() {
+        System.out.println("=====================================");
         System.out.println(getUsername()+"'s cards are:");
         for(Card c : hand) {
             System.out.println(c.toString());
             // Prints out each card in the hand
         }
         System.out.println(getUsername()+" has a hand value of "+getHandValue());
+        System.out.println("=====================================");
     }
 
 }

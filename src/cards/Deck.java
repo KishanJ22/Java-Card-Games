@@ -12,7 +12,7 @@ public class Deck {
     // The suits of the cards are stored in an array.
 
     public Deck() {
-        cards = new ArrayList<Card>();
+        cards = new ArrayList<>();
         // The arraylist is initialized.
         ranks = new String[]{"2", "3", "4", "5", "6", "7", "8", "9", "10",
                 "Jack", "Queen", "King", "Ace"};
@@ -27,7 +27,8 @@ public class Deck {
                 // A card is created for each rank and suit.
             }
         }
-        System.out.println("The deck has been created. Now shuffle it!");
+        System.out.println("=====================================");
+        System.out.println("The deck has been created!");
     }
 
     public void shuffle() {
