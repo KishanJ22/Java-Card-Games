@@ -49,6 +49,14 @@ public class BlackjackGame {
 
     private void playerTurn() {
         while (true) {
+
+            if (player.isBust()) {
+                endGame(player.getUsername() + " has gone bust! " + player.getUsername() + " loses.");
+                break;
+            } else if(player.hasBlackjack()) {
+                endGame(player.getUsername() + " has Blackjack! " + player.getUsername() + " wins!");
+            }
+
             System.out.println("Would you like to hit or stand?");
             String choice = scanner.nextLine();
 
@@ -62,10 +70,6 @@ public class BlackjackGame {
             } else {
                 System.out.println("Please enter a valid input.");
             }
-        }
-
-        if (player.isBust()) {
-            endGame(player.getUsername() + " has gone bust! " + player.getUsername() + " loses.");
         }
     }
 
@@ -81,7 +85,13 @@ public class BlackjackGame {
             endGame("The dealer is bust! " + player.getUsername() + " wins!");
         } else if (dealer.getHandValue() >= 17) {
             dealer.stand();
-            endGame(player.getUsername() + " wins!");
+            if(dealer.getHandValue() > player.getHandValue()) {
+                endGame("The dealer has a hand value of "+dealer.getHandValue()+". "+player.getUsername()+" has a hand value of "+player.getHandValue()+". The dealer wins!");
+            } else if(dealer.getHandValue() < player.getHandValue()) {
+                endGame("The dealer has a hand value of "+dealer.getHandValue()+". "+player.getUsername()+" has a hand value of "+player.getHandValue()+". "+player.getUsername()+" wins!");
+            } else {
+                endGame("The dealer has a hand value of "+dealer.getHandValue()+". "+player.getUsername()+" has a hand value of "+player.getHandValue()+". It's a push!");
+            }
         }
     }
 

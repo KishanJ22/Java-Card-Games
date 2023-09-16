@@ -1,5 +1,6 @@
 import blackjack.BlackjackGame;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
@@ -19,6 +20,10 @@ public class Main {
                 // If the user enters "blackjack", then a new BlackjackGame object is created.
                 System.out.println("Enter your username:");
                 String username = scanner.nextLine();
+                if(Objects.equals(username, "")) {
+                    username = "Player";
+                    System.out.println("No username entered. Defaulting to 'Player'");
+                }
                 // The user is asked to enter their username.
                 System.out.println("Starting Blackjack!");
                 BlackjackGame blackjackGame = new BlackjackGame(username);
